@@ -5095,7 +5095,12 @@ autopatch-$(call dep_name,$1)::
 	fi
 endef
 
-$(foreach dep,$(BUILD_DEPS) $(DEPS),$(eval $(call dep_target,$(dep))))
+define NL
+
+
+endef
+
+$(foreach dep,$(BUILD_DEPS) $(DEPS), $(eval $(call dep_target,$(dep)))$(NL);)
 
 ifndef IS_APP
 clean:: clean-apps
